@@ -40,3 +40,29 @@ CREATE TABLE AchtbanenVanEuropa
     ,DatumGewijzigd  DATETIME(6)                         NOT NULL
     ,CONSTRAINT      PK_AchtbanenVanEuropa_Id            PRIMARY KEY CLUSTERED(Id)
 ) ENGINE=InnoDB;
+
+-- Step 03
+-- **************************************************************
+-- Doel : Vul de tabel AchtbanenVanEuropa met gegevens
+-- **************************************************************
+-- Versie   Datum       Auteur              Omschrijving
+-- ******   *****       ******              ************
+-- 01       14-11-2024  Arjan de Ruijter    Vulling Achtbanen van
+--                                          Europa
+-- **************************************************************
+
+INSERT INTO AchtbanenVanEuropa
+(
+     Naam
+    ,NaamPretpark
+    ,Land
+    ,Topsnelheid
+    ,Hoogte
+    ,IsActief
+    ,Opmerking
+    ,DatumAangemaakt
+    ,DatumGewijzigd
+)
+VALUES
+  ('Red Force', 'Ferrari Land', 'Spanje', 180, 112, 1, NULL, SYSDATE(6), SYSDATE(6))
+ ,('Hyperion', 'Energylandia', 'Polen', 142, 77, 1, NULL, SYSDATE(6), SYSDATE(6));
