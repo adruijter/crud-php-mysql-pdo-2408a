@@ -65,4 +65,7 @@ INSERT INTO AchtbanenVanEuropa
 )
 VALUES
   ('Red Force', 'Ferrari Land', 'Spanje', 180, 112, 1, NULL, SYSDATE(6), SYSDATE(6))
- ,('Hyperion', 'Energylandia', 'Polen', 142, 77, 1, NULL, SYSDATE(6), SYSDATE(6));
+ ,('Hyperion', 'Energylandia', 'Polen', 142, 77, 1, NULL, SYSDATE(6), SYSDATE(6))
+ ,('Shambhala', 'PortAventura Park', 'Spanje', 134, 76, 1, NULL, SYSDATE(6), SYSDATE(6))
+ ,('Schwur des Kärnan', 'Hansa Park', 'Duitsland', 127, 79, 1, NULL, SYSDATE(6), SYSDATE(6))
+ ,('Silver Star', 'Europa-Park', 'Duitsland', 127, 73, 1, NULL, SYSDATE(6), SYSDATE(6));
