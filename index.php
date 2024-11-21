@@ -1,3 +1,56 @@
+<?php
+    /**
+     * We sluiten het configuratiebestand in bij de pagina
+     * index.php
+     */
+    include('config/config.php');
+
+    $dsn = "mysql:host=$dbHost;
+            dbname=$dbName;
+            charset=UTF8";
+
+    /**
+     * Maak een nieuw PDO-object aan zodat we een verbinding
+     * kunnen maken met de mysql-server
+     */
+    $pdo = new PDO($dsn, $dbUser, $dbPass);
+
+    /**
+     * Dit is de zoekvraag voor de database zodat we 
+     * alle achtbanen van Europa selecteren
+     */
+    $sql = "SELECT  ABVN.Naam
+                   ,ABVN.NaamPretpark
+                   ,ABVN.Land
+                   ,ABVN.Topsnelheid
+                   ,ABVN.Hoogte
+    
+            FROM AchtbanenVanEuropa AS ABVN
+            
+            ORDER BY ABVN.Hoogte";
+    
+
+    /**
+     * We moeten de sql-query voorbereiden voor de PDO class
+     * door middel van de method prepare
+     */
+    $statement = $pdo->prepare($sql);
+
+    /**
+     * We voeren de geprepareerde sql-query uit
+     */
+    $statement->execute();
+
+    /**
+     * We krijgen de records binnen als een indexed-array
+     * met daarin objecten
+     */
+    $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+
+    var_dump($result);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
