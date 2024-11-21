@@ -27,7 +27,7 @@
     
             FROM AchtbanenVanEuropa AS ABVN
             
-            ORDER BY ABVN.Hoogte";
+            ORDER BY ABVN.Hoogte DESC";
     
 
     /**
@@ -46,9 +46,6 @@
      * met daarin objecten
      */
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
-
-
-    var_dump($result);
 ?>
 
 <!doctype html>
@@ -73,13 +70,15 @@
             <th>Hoogte</th>
         </thead>
         <tbody>
-            <tr>
-                <td>Test1</td>
-                <td>Test2</td>
-                <td>Test3</td>
-                <td>Test4</td>
-                <td>Test5</td>
-            </tr>
+            <?php foreach($result as $achtbaanInfo) : ?>
+                  <tr>
+                     <td><?= $achtbaanInfo->Naam ?></td>
+                     <td><?= $achtbaanInfo->NaamPretpark ?></td>
+                     <td><?= $achtbaanInfo->Land ?></td>
+                     <td><?= $achtbaanInfo->Topsnelheid ?></td>
+                     <td><?= $achtbaanInfo->Hoogte ?></td>                 
+                  </tr>
+            <?php endforeach ?>
         </tbody>
     </table>
 
