@@ -16,38 +16,45 @@
     <div class="container mt-3">
 
       <div class="row mb-1">
-        <div class="col-2"></div>
-        <div class="col-8 text-primary"><h3>Voer een nieuwe achtbaan in:</h3></div>
-        <div class="col-2"></div>
+        <div class="col-3"></div>
+        <div class="col-6 text-primary"><h3>Voer een nieuwe achtbaan in:</h3></div>
+        <div class="col-3"></div>
       </div>
 
-      <form action="create.php" method="POST">
-        <div class="mb-3">
-            <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
-            <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" placeholder="Naam van de achtbaan">
+      
+      <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">              
+              <form action="create.php" method="POST">
+                <div class="mb-3">
+                    <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
+                    <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" placeholder="Naam van de achtbaan">
+                </div>
+                <div class="mb-3">
+                    <label for="naamPretpark" class="form-label">Naam Pretpark</label>
+                    <input name="pretpark" type="text" class="form-control" id="naamPretpark" placeholder="Naam van het pretpark">
+                </div>
+                <div class="mb-3">
+                    <label for="naamLand" class="form-label">Land</label>
+                    <input name="land" type="text" class="form-control" id="naamLand" placeholder="Naam van het land">
+                </div>
+                <div class="mb-3">
+                    <label for="naamTopsnelheid" class="form-label">Topsnelheid</label>
+                    <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="200">
+                </div>
+                <div class="mb-3">
+                    <label for="naamHoogte" class="form-label">Hoogte</label>
+                    <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="200">
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+               
+              </form>
         </div>
-        <div class="mb-3">
-            <label for="naamPretpark" class="form-label">Naam Pretpark</label>
-            <input name="pretpark" type="text" class="form-control" id="naamPretpark" placeholder="Naam van het pretpark">
-        </div>
-        <div class="mb-3">
-            <label for="naamLand" class="form-label">Land</label>
-            <input name="land" type="text" class="form-control" id="naamLand" placeholder="Naam van het land">
-        </div>
-        <div class="mb-3">
-            <label for="naamTopsnelheid" class="form-label">Topsnelheid</label>
-            <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="200">
-        </div>
-        <div class="mb-3">
-            <label for="naamHoogte" class="form-label">Hoogte</label>
-            <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="200">
-        </div>
-        
-        <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-        </div>
-       
-      </form>
+        <div class="col-3"></div>
+      </div>
 
 
       
