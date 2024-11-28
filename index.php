@@ -70,7 +70,11 @@
       <div class="row mb-3">
         <div class="col-2"></div>
         <div class="col-8">
-          <h5>Nieuwe achtbaan <i class="bi bi-plus-square-fill text-danger"></i></h5>
+          <h5>Nieuwe achtbaan 
+              <a href="./create.php">
+                <i class="bi bi-plus-square-fill text-danger"></i>
+              </a>
+          </h5>
         </div>
         <div class="col-2"></div>
       </div>
