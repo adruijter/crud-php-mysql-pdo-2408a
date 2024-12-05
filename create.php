@@ -1,9 +1,6 @@
 <?php
     
     if (isset($_POST['submit'])) {
-
-   
-    var_dump($_POST);
     /**
      * We sluiten het configuratiebestand in bij de pagina
      * index.php
@@ -49,25 +46,36 @@
    */
   $statement = $pdo->prepare($sql);
 
-  $statement->bindValue(':naamAchtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
-  $statement->bindValue(':naamPretpark', $_POST['pretpark'], PDO::PARAM_STR);
-  $statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
-  $statement->bindValue(':topsnelheid', $_POST['topsnelheid'], PDO::PARAM_INT);
-  $statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
+  /**
+   * Schoonmaken filteren van het $_POST array
+   */
+  $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+  /**
+   * Het binden van de $_POST- waarden aan de placeholders in de $sql-query
+   */
+  $statement->bindValue(':naamAchtbaan', trim($_POST['achtbaan']), PDO::PARAM_STR);
+  $statement->bindValue(':naamPretpark', trim($_POST['pretpark']), PDO::PARAM_STR);
+  $statement->bindValue(':land', trim($_POST['land']), PDO::PARAM_STR);
+  $statement->bindValue(':topsnelheid', trim($_POST['topsnelheid']), PDO::PARAM_INT);
+  $statement->bindValue(':hoogte', ($_POST['hoogte']), PDO::PARAM_INT);
 
   /**
    * Voer de query uit.
    */
   $statement->execute();
 
+  /**
+   * Maak de succesmelding zichtbaar
+   */
   $display = 'flex';
 
+  /**
+   * Stuur de gebruiker door naar de index pagina
+   */
   header('Refresh:3; url=index.php');
-
-
   } 
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -80,7 +88,6 @@
   </head>
   <body>
     <div class="container mt-3">
-
       <div class="row" style="display:<?= $display ?? 'none'; ?>">
         <div class="col-3"></div>
         <div class="col-6">
@@ -104,27 +111,27 @@
               <form action="create.php" method="POST">
                 <div class="mb-3">
                     <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
-                    <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" placeholder="Naam van de achtbaan">
+                    <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" placeholder="Naam van de achtbaan" value="<?= $_POST['achtbaan'] ?? ''; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="naamPretpark" class="form-label">Naam Pretpark</label>
-                    <input name="pretpark" type="text" class="form-control" id="naamPretpark" placeholder="Naam van het pretpark">
+                    <input name="pretpark" type="text" class="form-control" id="naamPretpark" placeholder="Naam van het pretpark" value="<?= $_POST['pretpark'] ?? ''; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="naamLand" class="form-label">Land</label>
-                    <input name="land" type="text" class="form-control" id="naamLand" placeholder="Naam van het land">
+                    <input name="land" type="text" class="form-control" id="naamLand" placeholder="Naam van het land" value="<?= $_POST['land'] ?? ''; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="naamTopsnelheid" class="form-label">Topsnelheid</label>
-                    <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="255">
+                    <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="255" value="<?= $_POST['topsnelheid'] ?? ''; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="naamHoogte" class="form-label">Hoogte</label>
-                    <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="255">
+                    <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="255" value="<?= $_POST['hoogte'] ?? ''; ?>">
                 </div>
                 
                 <div class="d-grid gap-2">
-                    <button name="submit" value="submit" type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    <button name="submit" value="submit" type="submit" class="btn btn-primary btn-lg">Verzenden</button>
                 </div>
                
               </form>

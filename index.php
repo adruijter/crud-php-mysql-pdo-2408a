@@ -89,6 +89,8 @@
                   <th>Land</th>
                   <th>Topsnelheid</th>
                   <th>Hoogte</th>
+                  <th></th>
+                  <th></th>
               </thead>
               <tbody>
                   <?php foreach($result as $achtbaanInfo) : ?>
@@ -97,7 +99,13 @@
                           <td><?= $achtbaanInfo->NaamPretpark ?></td>
                           <td><?= $achtbaanInfo->Land ?></td>
                           <td><?= $achtbaanInfo->Topsnelheid ?></td>
-                          <td><?= $achtbaanInfo->Hoogte ?></td>                 
+                          <td><?= $achtbaanInfo->Hoogte ?></td>
+                          <td>
+                            <i class="bi bi-pencil-square text-primary"></i>
+                          </td>
+                          <td>
+                            <i class="bi bi-x-circle-fill text-danger"></i>
+                          </td>                 
                         </tr>
                   <?php endforeach ?>
               </tbody>
