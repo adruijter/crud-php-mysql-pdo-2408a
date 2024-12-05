@@ -1,4 +1,8 @@
 <?php
+    
+    if (isset($_POST['submit'])) {
+
+   
     var_dump($_POST);
     /**
      * We sluiten het configuratiebestand in bij de pagina
@@ -16,7 +20,7 @@
      */
     $pdo = new PDO($dsn, $dbUser, $dbPass);
 
-    echo $_POST['achtbaan'];
+
     $sql = "INSERT INTO AchtbanenVanEuropa
             (
                 Naam
@@ -30,16 +34,34 @@
                 ,DatumGewijzigd
             )
             VALUES
-            (    '{$_POST["achtbaan"]}'
-                ,'Ferrari Land'
-                ,'Spanje'
-                , 180
-                , 112
+            (    :naamAchtbaan
+                ,:naamPretpark
+                ,:land
+                ,:topsnelheid
+                ,:hoogte
                 , 1
                 , NULL
                 , SYSDATE(6)
                 , SYSDATE(6)
             )";
+  /**
+   * Maak het sql-statement klaar voor PDO
+   */
+  $statement = $pdo->prepare($sql);
+
+  $statement->bindValue(':naamAchtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
+  $statement->bindValue(':naamPretpark', $_POST['pretpark'], PDO::PARAM_STR);
+  $statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
+  $statement->bindValue(':topsnelheid', $_POST['topsnelheid'], PDO::PARAM_INT);
+  $statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
+
+  /**
+   * Voer de query uit.
+   */
+  $statement->execute();
+
+
+  } 
 ?>
 
 <!doctype html>
