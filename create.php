@@ -60,6 +60,10 @@
    */
   $statement->execute();
 
+  $display = 'flex';
+
+  header('Refresh:3; url=index.php');
+
 
   } 
 ?>
@@ -76,6 +80,16 @@
   </head>
   <body>
     <div class="container mt-3">
+
+      <div class="row" style="display:<?= $display ?? 'none'; ?>">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="alert alert-success text-center" role="alert">
+            De achtbaan is opgeslagen, u wordt doorgestuurd naar de homepagina
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
 
       <div class="row mb-1">
         <div class="col-3"></div>
@@ -102,11 +116,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="naamTopsnelheid" class="form-label">Topsnelheid</label>
-                    <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="200">
+                    <input name="topsnelheid" type="number" class="form-control" id="naamLand" placeholder="Topsnelheid" min="0" max="255">
                 </div>
                 <div class="mb-3">
                     <label for="naamHoogte" class="form-label">Hoogte</label>
-                    <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="200">
+                    <input name="hoogte" type="number" class="form-control" id="naamHoogte" placeholder="Hoogte" min="0" max="255">
                 </div>
                 
                 <div class="d-grid gap-2">
