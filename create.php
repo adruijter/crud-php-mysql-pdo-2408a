@@ -1,5 +1,45 @@
 <?php
     var_dump($_POST);
+    /**
+     * We sluiten het configuratiebestand in bij de pagina
+     * index.php
+     */
+    include('config/config.php');
+
+    $dsn = "mysql:host=$dbHost;
+            dbname=$dbName;
+            charset=UTF8";
+
+    /**
+     * Maak een nieuw PDO-object aan zodat we een verbinding
+     * kunnen maken met de mysql-server
+     */
+    $pdo = new PDO($dsn, $dbUser, $dbPass);
+
+    echo $_POST['achtbaan'];
+    $sql = "INSERT INTO AchtbanenVanEuropa
+            (
+                Naam
+                ,NaamPretpark
+                ,Land
+                ,Topsnelheid
+                ,Hoogte
+                ,IsActief
+                ,Opmerking
+                ,DatumAangemaakt
+                ,DatumGewijzigd
+            )
+            VALUES
+            (    '{$_POST["achtbaan"]}'
+                ,'Ferrari Land'
+                ,'Spanje'
+                , 180
+                , 112
+                , 1
+                , NULL
+                , SYSDATE(6)
+                , SYSDATE(6)
+            )";
 ?>
 
 <!doctype html>
@@ -48,7 +88,7 @@
                 </div>
                 
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    <button name="submit" value="submit" type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </div>
                
               </form>
