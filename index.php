@@ -19,7 +19,8 @@
      * Dit is de zoekvraag voor de database zodat we 
      * alle achtbanen van Europa selecteren
      */
-    $sql = "SELECT  ABVN.Naam
+    $sql = "SELECT  ABVN.Id
+                   ,ABVN.Naam
                    ,ABVN.NaamPretpark
                    ,ABVN.Land
                    ,ABVN.Topsnelheid
@@ -89,8 +90,8 @@
                   <th>Land</th>
                   <th>Topsnelheid</th>
                   <th>Hoogte</th>
-                  <th></th>
-                  <th></th>
+                  <th>Update</th>
+                  <th>Verwijder</th>
               </thead>
               <tbody>
                   <?php foreach($result as $achtbaanInfo) : ?>
@@ -100,11 +101,15 @@
                           <td><?= $achtbaanInfo->Land ?></td>
                           <td><?= $achtbaanInfo->Topsnelheid ?></td>
                           <td><?= $achtbaanInfo->Hoogte ?></td>
-                          <td>
-                            <i class="bi bi-pencil-square text-primary"></i>
+                          <td class="text-center">
+                            <a href="update.php?Id=<?= $achtbaanInfo->Id; ?>">
+                              <i class="bi bi-pencil-square text-primary"></i>
+                            </a>                              
                           </td>
-                          <td>
-                            <i class="bi bi-x-circle-fill text-danger"></i>
+                          <td class="text-center">
+                            <a href="delete.php?Id=<?= $achtbaanInfo->Id; ?>">
+                              <i class="bi bi-x-circle-fill text-danger"></i>
+                            </a>
                           </td>                 
                         </tr>
                   <?php endforeach ?>
